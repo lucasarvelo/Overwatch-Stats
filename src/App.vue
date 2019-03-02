@@ -1,20 +1,56 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div class="page-container">
+    <md-app md-waterfall md-mode="overlap">
+      <md-app-toolbar class="md-primary md-large">
+        <Toolbar @toggleMenu="menuVisible = !menuVisible"/>
+      </md-app-toolbar>
+      <md-app-drawer :md-active.sync="menuVisible">
+        <md-toolbar class="md-transparent" md-elevation="0"></md-toolbar>
+        <Drawer/>
+      </md-app-drawer>
+      <md-app-content>
+        <router-view/>
+      </md-app-content>
+    </md-app>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<script>
+// @ is an alias to /src
+import Toolbar from "@/components/Toolbar.vue";
+import Drawer from "@/components/Drawer.vue";
+import Main from "@/components/Main.vue";
+export default {
+  name: "home",
+  components: {
+    Toolbar,
+    Drawer,
+    Main
+  },
+  data: () => ({
+    menuVisible: false
+  })
+};
+</script>
+
+<style scope>
+.md-app {
+  border: 1px solid rgba(#000, 0.12);
+  min-height: 100vh;
+}
+
+.md-drawer {
+  width: 230px;
+  max-width: calc(100vw - 125px);
+}
+
+.md-toolbar {
+  background-image: url("./assets/overwatch-header.jpg");
+  background-size: cover;
+  background-position: center 9%;
+}
+
+.menu-logo {
+  margin: auto;
 }
 </style>
