@@ -9,7 +9,8 @@
         <Drawer/>
       </md-app-drawer>
       <md-app-content>
-        <router-view/>
+        <router-view v-if="this.battleTag" :profile="this.profile"/>
+        <FormBattleTag :updateData="updateData" v-else/>
       </md-app-content>
     </md-app>
   </div>
@@ -19,17 +20,53 @@
 // @ is an alias to /src
 import Toolbar from "@/components/Toolbar.vue";
 import Drawer from "@/components/Drawer.vue";
-import Main from "@/components/Main.vue";
+import FormBattleTag from "@/components/FormBattleTag.vue";
+
+import axios from "axios";
+
 export default {
-  name: "home",
+  name: "App",
   components: {
     Toolbar,
     Drawer,
-    Main
+    FormBattleTag
   },
   data: () => ({
-    menuVisible: false
-  })
+    menuVisible: false,
+    battleTag: undefined,
+    profile: undefined,
+    heroes: undefined
+  }),
+  methods: {
+    updateData() {
+      this.battleTag = localStorage.getItem("battleTag");
+      axios
+        .all([
+          axios.get(
+            "https://ow-api.com/v1/stats/pc/us/" + this.battleTag + "/profile"
+          ),
+          axios.get("https://overwatch-api.net/api/v1/hero")
+        ])
+        .then(
+          axios.spread((profile, heroes) => {
+            this.profile = profile;
+            this.heroes = heroes;
+            localStorage.setItem("profile", JSON.stringify(profile));
+            localStorage.setItem("heroes", JSON.stringify(heroes));
+            return 200;
+          })
+        )
+        .catch(e => {
+          this.errors.push(e);
+        });
+    }
+  },
+  created() {
+    const battleTag = localStorage.getItem("battleTag");
+    if (battleTag) {
+      this.updateData();
+    }
+  }
 };
 </script>
 
