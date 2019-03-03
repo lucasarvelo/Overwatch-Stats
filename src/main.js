@@ -9,7 +9,9 @@ import {
   MdTabs,
   MdDrawer,
   MdList,
-  MdCard
+  MdCard,
+  MdField,
+  MdProgress
 } from "vue-material/dist/components";
 import "vue-material/dist/vue-material.min.css";
 import "vue-material/dist/theme/default.css";
@@ -22,6 +24,8 @@ Vue.use(MdTabs);
 Vue.use(MdDrawer);
 Vue.use(MdList);
 Vue.use(MdCard);
+Vue.use(MdField);
+Vue.use(MdProgress);
 
 Vue.config.productionTip = false;
 
