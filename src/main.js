@@ -15,6 +15,7 @@ import {
 } from "vue-material/dist/components";
 import "vue-material/dist/vue-material.min.css";
 import "vue-material/dist/theme/default.css";
+import Axios from "axios";
 
 Vue.use(MdApp);
 Vue.use(MdToolbar);
@@ -26,6 +27,8 @@ Vue.use(MdList);
 Vue.use(MdCard);
 Vue.use(MdField);
 Vue.use(MdProgress);
+
+Vue.prototype.$axios = Axios;
 
 Vue.config.productionTip = false;
 
