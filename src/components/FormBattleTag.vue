@@ -39,7 +39,7 @@ export default {
   name: "FormValidation",
   mixins: [validationMixin],
   props: {
-    updateData: { type: Function }
+    updateBattleTag: { type: Function }
   },
   data: () => ({
     form: {
@@ -69,7 +69,7 @@ export default {
     saveBattleTag() {
       this.sending = true;
       localStorage.setItem("battleTag", this.form.battleTag);
-      this.updateData();
+      this.updateBattleTag();
       this.sending = false;
     },
     validateBattleTag() {

@@ -9,8 +9,8 @@
         <Drawer/>
       </md-app-drawer>
       <md-app-content>
-        <router-view v-if="this.battleTag" :profile="this.profile"/>
-        <FormBattleTag :updateData="updateData" v-else/>
+        <router-view v-if="this.battleTag"/>
+        <FormBattleTag :updateBattleTag="updateBattleTag" v-else/>
       </md-app-content>
     </md-app>
   </div>
@@ -22,8 +22,6 @@ import Toolbar from "@/components/Toolbar.vue";
 import Drawer from "@/components/Drawer.vue";
 import FormBattleTag from "@/components/FormBattleTag.vue";
 
-import axios from "axios";
-
 export default {
   name: "App",
   components: {
@@ -33,38 +31,20 @@ export default {
   },
   data: () => ({
     menuVisible: false,
-    battleTag: undefined,
-    profile: undefined,
-    heroes: undefined
+    battleTag: undefined
   }),
   methods: {
-    updateData() {
-      this.battleTag = localStorage.getItem("battleTag");
-      axios
-        .all([
-          axios.get(
-            "https://ow-api.com/v1/stats/pc/us/" + this.battleTag + "/profile"
-          ),
-          axios.get("https://overwatch-api.net/api/v1/hero")
-        ])
-        .then(
-          axios.spread((profile, heroes) => {
-            this.profile = profile;
-            this.heroes = heroes;
-            localStorage.setItem("profile", JSON.stringify(profile));
-            localStorage.setItem("heroes", JSON.stringify(heroes));
-            return 200;
-          })
-        )
-        .catch(e => {
-          this.errors.push(e);
-        });
+    updateBattleTag() {
+      const battleTag = localStorage.getItem("battleTag");
+      if (battleTag) {
+        this.battleTag = battleTag;
+      }
     }
   },
   created() {
     const battleTag = localStorage.getItem("battleTag");
     if (battleTag) {
-      this.updateData();
+      this.updateBattleTag();
     }
   }
 };
