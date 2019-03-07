@@ -2,16 +2,18 @@
   <div class="dashboard">
     <ProfileCard
       v-if="this.profile"
-      :profileIcon="this.profile.data.icon"
-      :profileName="this.profile.data.name"
-      :profileRating="this.profile.data.rating"
-      :profileRatingIcon="this.profile.data.ratingIcon"
+      :profileIcon="this.profile.icon"
+      :profileName="this.profile.name"
+      :profileRating="this.profile.rating"
+      :profileRatingIcon="this.profile.ratingIcon"
     />
   </div>
 </template>
 
 <script>
 import ProfileCard from "@/components/ProfileCard.vue";
+import profileService from "@/services/profileService.js";
+import heroesService from "@/services/heroesService.js";
 
 export default {
   name: "Dashboard",
@@ -24,33 +26,29 @@ export default {
     heroes: undefined
   }),
   methods: {
-    updateData() {
+    getProfile() {
       this.battleTag = localStorage.getItem("battleTag");
-      this.$axios
-        .all([
-          this.$axios.get(
-            "https://ow-api.com/v1/stats/pc/us/" + this.battleTag + "/profile"
-          ),
-          this.$axios.get("https://overwatch-api.net/api/v1/hero")
-        ])
-        .then(
-          this.$axios.spread((profile, heroes) => {
-            this.profile = profile;
-            this.heroes = heroes;
-            localStorage.setItem("profile", JSON.stringify(profile));
-            localStorage.setItem("heroes", JSON.stringify(heroes));
-            return 200;
-          })
-        )
-        .catch(e => {
-          this.errors.push(e);
-        });
+      profileService(this.$axios)
+        .get(this.battleTag)
+        .then(profile => {
+          this.profile = profile;
+        })
+        .catch(error => error);
+    },
+    getHeroes() {
+      heroesService(this.$axios)
+        .get()
+        .then(heroes => {
+          this.heroes = heroes;
+        })
+        .catch(error => error);
     }
   },
   created() {
     const battleTag = localStorage.getItem("battleTag");
     if (battleTag) {
-      this.updateData();
+      this.getProfile();
+      this.getHeroes();
     }
   }
 };
