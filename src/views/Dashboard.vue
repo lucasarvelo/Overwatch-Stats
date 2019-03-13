@@ -2,10 +2,10 @@
   <div class="dashboard">
     <ProfileCard
       v-if="this.profile"
-      :profileIcon="this.profile.icon"
-      :profileName="this.profile.name"
-      :profileRating="this.profile.rating"
-      :profileRatingIcon="this.profile.ratingIcon"
+      :profileIcon="this.profile.portrait"
+      :profileName="this.profile.username"
+      :profileRating="this.profile.level"
+      :profileRatingIcon="this.profile.levelFrame"
     />
   </div>
 </template>
