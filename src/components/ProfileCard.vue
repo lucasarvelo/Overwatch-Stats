@@ -2,7 +2,10 @@
   <md-card>
     <md-card-media-cover md-solid>
       <md-card-media>
-        <img v-bind:src="profileIcon">
+        <img
+          :src="' https://images.weserv.nl/?url=' + profileIcon.replace(/(^\w+:|^)\/\//, '')"
+          crossorigin="anonymous"
+        >
       </md-card-media>
       <md-card-area>
         <md-card-header>
