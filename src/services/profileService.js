@@ -4,7 +4,6 @@ const profileService = client => {
       return client
         .get("http://overwatchy.com/profile/pc/us/" + battleTag)
         .then(profile => {
-          localStorage.setItem("profile", JSON.stringify(profile.data));
           return profile.data;
         })
         .catch(error => error);

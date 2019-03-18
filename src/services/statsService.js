@@ -4,7 +4,6 @@ const statsService = client => {
       return client
         .get("http://overwatchy.com/stats/pc/us/" + battleTag)
         .then(stats => {
-          localStorage.setItem("profile", JSON.stringify(stats.data));
           return stats.data;
         })
         .catch(error => error);

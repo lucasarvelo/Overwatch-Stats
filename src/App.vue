@@ -9,8 +9,8 @@
         <Drawer/>
       </md-app-drawer>
       <md-app-content>
-        <router-view v-if="this.battleTag"/>
-        <FormBattleTag :updateBattleTag="updateBattleTag" v-else/>
+        <router-view v-if="this.$store.state.battleTag"/>
+        <FormBattleTag v-else/>
       </md-app-content>
     </md-app>
   </div>
@@ -33,18 +33,10 @@ export default {
     menuVisible: false,
     battleTag: undefined
   }),
-  methods: {
-    updateBattleTag() {
-      const battleTag = localStorage.getItem("battleTag");
-      if (battleTag) {
-        this.battleTag = battleTag;
-      }
-    }
-  },
   created() {
     const battleTag = localStorage.getItem("battleTag");
     if (battleTag) {
-      this.updateBattleTag();
+      this.$store.commit("SET_BATTLETAG", battleTag);
     }
   }
 };

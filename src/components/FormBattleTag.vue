@@ -38,9 +38,6 @@ import { required, minLength, maxLength } from "vuelidate/lib/validators";
 export default {
   name: "FormValidation",
   mixins: [validationMixin],
-  props: {
-    updateBattleTag: { type: Function }
-  },
   data: () => ({
     form: {
       battleTag: null
@@ -69,7 +66,7 @@ export default {
     saveBattleTag() {
       this.sending = true;
       localStorage.setItem("battleTag", this.form.battleTag);
-      this.updateBattleTag();
+      this.$store.commit("SET_BATTLETAG", this.form.battleTag);
       this.sending = false;
     },
     validateBattleTag() {
