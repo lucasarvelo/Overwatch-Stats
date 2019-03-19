@@ -1,6 +1,6 @@
 <template>
   <md-card>
-    <md-card-media-cover md-solid>
+    <md-card-media-cover md-text-scrim>
       <md-card-media>
         <img
           :src="' https://images.weserv.nl/?url=' + this.$store.state.profile.portrait.replace(/(^\w+:|^)\/\//, '')"
@@ -10,7 +10,10 @@
       <md-card-area>
         <md-card-header>
           <span class="md-title">{{this.$store.state.profile.username}}</span>
-          <span class="md-subhead">{{this.$store.state.profile.level}}</span>
+          <span class="md-subhead">Level:
+            <br>
+            {{this.$store.state.profile.level}}
+          </span>
         </md-card-header>
       </md-card-area>
     </md-card-media-cover>
@@ -25,9 +28,7 @@ export default {
 
 <style scoped>
 .md-card {
-  width: 250px;
-  margin: 4px;
-  display: inline-block;
-  vertical-align: top;
+  min-width: 165px;
+  padding: 5px;
 }
 </style>
