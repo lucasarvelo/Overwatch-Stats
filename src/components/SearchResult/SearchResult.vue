@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: SearchResult,
+  name: "SearchResult",
   props: {
     results: Array
   }

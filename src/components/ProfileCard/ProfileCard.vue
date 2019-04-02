@@ -9,8 +9,9 @@
       </md-card-media>
       <md-card-area>
         <md-card-header>
-          <span class="md-title">{{this.$store.state.profile.username}}</span>
-          <span class="md-subhead">Level:
+          <span class="md-title center-align">{{this.$store.state.profile.username}}</span>
+          <span class="md-subhead">
+            Level:
             <br>
             {{this.$store.state.profile.level}}
           </span>

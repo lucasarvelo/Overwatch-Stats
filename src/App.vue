@@ -18,9 +18,9 @@
 
 <script>
 // @ is an alias to /src
-import Toolbar from "@/components/Toolbar.vue";
-import Drawer from "@/components/Drawer.vue";
-import FormBattleTag from "@/components/FormBattleTag.vue";
+import Toolbar from "@/components/Toolbar/Toolbar.vue";
+import Drawer from "@/components/Drawer/Drawer.vue";
+import FormBattleTag from "@/components/FormBattleTag/FormBattleTag.vue";
 
 export default {
   name: "App",
