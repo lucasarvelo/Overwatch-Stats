@@ -1,5 +1,7 @@
 <template>
-  <div class="md-layout md-layout-item md-gutter">
+  <div
+    class="md-layout-item md-layout md-large-size-70 md-medium-size-70 md-small-size-100 md-xsmall-size-100 md-alignment-center-center md-gutter"
+  >
     <md-card md-elevation-10 class="md-layout-item">
       <md-card-area>
         <md-card-header>
@@ -48,4 +50,7 @@ export default {
 </script>
 
 <style scoped>
+.md-layout-item {
+  margin: 5px;
+}
 </style>
