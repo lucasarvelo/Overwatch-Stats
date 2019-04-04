@@ -1,10 +1,7 @@
 <template>
-  <md-progress-spinner
-    :md-diameter="100"
-    :md-stroke="10"
-    md-mode="indeterminate"
-    class="center-align"
-  ></md-progress-spinner>
+  <div class="md-layout md-alignment-center-center">
+    <md-progress-spinner :md-diameter="100" :md-stroke="10" md-mode="indeterminate"/>
+  </div>
 </template>
 
 <script>
