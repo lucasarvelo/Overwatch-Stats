@@ -6,6 +6,7 @@
     <ProfileCard/>
     <StatsDashboard/>
     <div class="md-layout-item md-layout md-alignment-center-center md-gutter">
+      <h1 class="md-layout-item md-size-80">Competitive - Best</h1>
       <StatsCard
         v-for="item in this.$store.state.stats.stats.best.competitive"
         :key="item.title"
