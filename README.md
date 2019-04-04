@@ -1,4 +1,4 @@
-# overwatch-app
+# Overwatch-Stats
 
 ## Project setup
 ```
