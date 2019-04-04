@@ -51,6 +51,6 @@ export default {
 
 <style scoped>
 .md-layout-item {
-  margin: 5px;
+  margin: 10px;
 }
 </style>
