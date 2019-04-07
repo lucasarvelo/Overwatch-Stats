@@ -1,7 +1,7 @@
 <template>
   <md-card
     md-elevation-10
-    class="md-layout-item md-large-size-30 md-medium-size-33 md-small-size-45 md-xsmall-size-100"
+    class="md-layout-item md-xlarge-size-25 md-large-size-30 md-medium-size-33 md-small-size-45 md-xsmall-size-100"
   >
     <md-card-area>
       <md-card-header>

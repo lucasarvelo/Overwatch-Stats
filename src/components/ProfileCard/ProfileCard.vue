@@ -1,6 +1,6 @@
 <template>
   <div
-    class="md-layout-item md-alignment-center-center md-large-size-25 md-medium-size-25 md-small-size-30 md-xsmall-size-100"
+    class="md-layout-item md-alignment-center-center md-xlarge-size-15 md-large-size-20 md-medium-size-25 md-small-size-30 md-xsmall-size-50"
   >
     <md-card>
       <md-card-media-cover md-text-scrim>
