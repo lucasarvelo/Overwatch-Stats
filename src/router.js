@@ -1,7 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Dashboard from "./views/Dashboard.vue";
-
 Vue.use(Router);
 
 export default new Router({
@@ -13,12 +12,37 @@ export default new Router({
     },
     {
       path: "/statistics",
-      name: "statistics",
       // route level code-splitting
       // this generates a separate chunk (statistics.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () =>
-        import(/* webpackChunkName: "statistics" */ "./views/Statistics.vue")
+        import(/* webpackChunkName: "statistics" */ "./views/Statistics.vue"),
+      children: [
+        {
+          path: "",
+          name: "statistics",
+          component: () =>
+            import(/* webpackChunkName: "Average" */ "./views/StatisticsTabs/Average.vue")
+        },
+        {
+          path: "/assists",
+          name: "assists",
+          component: () =>
+            import(/* webpackChunkName: "Average" */ "./views/StatisticsTabs/Assists.vue")
+        },
+        {
+          path: "/total",
+          name: "total",
+          component: () =>
+            import(/* webpackChunkName: "Average" */ "./views/StatisticsTabs/Total.vue")
+        },
+        {
+          path: "/awards",
+          name: "awards",
+          component: () =>
+            import(/* webpackChunkName: "Average" */ "./views/StatisticsTabs/Awards.vue")
+        }
+      ]
     },
     {
       path: "/heroes",
