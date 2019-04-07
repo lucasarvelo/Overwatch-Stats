@@ -30,6 +30,10 @@ Vue.use(MdField);
 Vue.use(MdProgress);
 Vue.use(MdLayout);
 
+//Fix Tabs links with Vue Router, Check https://github.com/vuematerial/vue-material/issues/1977
+Vue.component("router-link", Vue.options.components.RouterLink);
+Vue.component("router-view", Vue.options.components.RouterView);
+
 Vue.config.productionTip = false;
 
 new Vue({
