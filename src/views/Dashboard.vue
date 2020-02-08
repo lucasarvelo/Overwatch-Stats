@@ -3,19 +3,19 @@
     v-if="this.$store.state.profile && this.$store.state.stats"
     class="md-layout md-gutter md-alignment-center-center content"
   >
-    <ProfileCard/>
-    <StatsDashboard/>
+    <ProfileCard />
+    <StatsDashboard />
     <div class="md-layout-item md-layout md-alignment-center-center md-gutter md-size-100">
       <h1 class="md-layout-item md-size-100">Competitive - Best</h1>
       <StatsCard
-        v-for="item in this.$store.state.stats.stats.best.competitive"
-        :key="item.title"
-        :title="item.title"
-        :content="item.value"
+        v-for="(item, name) in this.$store.state.stats.stats.competitive.all.best"
+        :key="name"
+        :title="name.replace(/_/g, ' ').toUpperCase()"
+        :content="item.toString()"
       />
     </div>
   </div>
-  <Preloader v-else/>
+  <Preloader v-else />
 </template>
 
 <script>
