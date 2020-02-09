@@ -1,8 +1,8 @@
 <template>
   <div
-    class="md-layout-item md-layout md-xlarge-size-80 md-large-size-70 md-medium-size-70 md-small-size-100 md-xsmall-size-100 md-alignment-center-center md-gutter"
+    class="md-layout-item md-layout md-xlarge-size-80 md-large-size-70 md-medium-size-85 md-small-size-100 md-xsmall-size-100 md-alignment-center-center md-gutter"
   >
-    <md-card md-elevation-10 class="md-layout-item">
+    <md-card class="md-layout-item md-small-size-100">
       <md-card-area>
         <md-card-header>
           <span class="md-subhead">Skill Rate</span>
@@ -15,7 +15,7 @@
         </md-card-header>
       </md-card-area>
     </md-card>
-    <md-card md-elevation-10 class="md-layout-item">
+    <md-card class="md-layout-item md-small-size-100">
       <md-card-area>
         <md-card-header>
           <span class="md-subhead">Win Rate</span>
@@ -26,7 +26,7 @@
         </md-card-header>
       </md-card-area>
     </md-card>
-    <md-card md-elevation-10 class="md-layout-item">
+    <md-card class="md-layout-item md-small-size-100">
       <md-card-area>
         <md-card-header>
           <span class="md-subhead">Time Played</span>
